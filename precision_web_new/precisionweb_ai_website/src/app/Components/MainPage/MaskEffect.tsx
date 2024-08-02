@@ -22,7 +22,7 @@ export function MaskEffect() {
       > At <span className="text-red-500">Precision Web AI</span>, we transform visionary ideas into captivating
         digital experiences, offering services in <span className="text-red-500">product design, UI/UX, mobile
         app development, cloud services, data science, blockchain, IT
-        consulting, and AI</span>.
+        consulting, DevOps and AI</span>.
       </MaskContainer>
     </div>
     </>
