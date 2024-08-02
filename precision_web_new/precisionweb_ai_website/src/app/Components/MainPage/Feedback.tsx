@@ -3,7 +3,7 @@ import Marquee from "../../Components/magic_ui/MarqueProps";
 
 const reviews = [
   {
-    name: "Jack",
+    name: "Pranjal",
     username: "@jack",
     body: "I've never seen anything like this before. It's amazing. I love it.",
     img: "https://avatar.vercel.sh/jack",
