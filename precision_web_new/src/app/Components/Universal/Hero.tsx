@@ -96,10 +96,10 @@ const Hero = () => {
       const { scrollY } = useScroll();
 
   // Transform scroll position to vertical movement
-  const y = useTransform(scrollY, [0, 500], [0, 300]);
+  const y = useTransform(scrollY, [0, 450], [0, 300]);
 
   // Transform scroll position to scaling
-  const scale = useTransform(scrollY, [0, 500], [1, 1.5]);
+  const scale = useTransform(scrollY, [0, 450], [1, 1.5]);
 
   return (
     <>
@@ -113,7 +113,7 @@ const Hero = () => {
         style={{
           y,  // vertical movement
           scale,  // scaling
-          opacity: useTransform(scrollY, [0, 400], [1, 0.5]),  // opacity effect
+          opacity: useTransform(scrollY, [0, 450], [1, 0.5]),  // opacity effect
         }}
         // Apply transition settings through initial/animate/exit props if needed
         transition={{

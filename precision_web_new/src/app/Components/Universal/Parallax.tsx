@@ -19,7 +19,7 @@ export default function ParallaxPage() {
   
   return (
     <div style={{ width: '100%', height: '100%', background: '#253237' }}>
-      <Parallax ref={parallax} pages={3}>
+      <Parallax ref={parallax} pages={6}>
         <ParallaxLayer offset={1} speed={1} style={{ backgroundColor: '#805E73' }} />
         <ParallaxLayer offset={2} speed={1} style={{ backgroundColor: '#87BCDE' }} />
 
@@ -30,7 +30,7 @@ export default function ParallaxPage() {
          {/* <Hero/> */}
         
 
-        <ParallaxLayer offset={1} speed={1} style={{ height:"100vh" ,  opacity:"0.5" , overflow:"hidden"}} >
+        <ParallaxLayer offset={4} speed={1} style={{ height:"100vh" ,  opacity:"0.5" , overflow:"hidden"}} >
           <Beginning/>
         </ParallaxLayer>
         <ParallaxLayer offset={1.9} speed={1} style={{ height:"100vh" }} >
