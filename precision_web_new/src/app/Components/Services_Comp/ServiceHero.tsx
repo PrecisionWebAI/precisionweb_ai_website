@@ -5,7 +5,14 @@ import TypingAnimation from "../magic_ui/TypingAnimationProps";
 import ShinyButton from "../magic_ui/ShinyButton";
 import { SparklesCore } from "../ui/Sparkles";
 
-export function ServiceHero() {
+
+
+interface ServiceHeroProps {
+  Service_Heading: string;
+  Description: string;
+}
+
+export const ServiceHero: React.FC<ServiceHeroProps> = ({ Service_Heading, Description }) => {
   return (
     <>
     <div className="h-[100vh] w-full rounded-md flex flex-col md:items-center md:justify-center  antialiased bg-grid-white/[0.02] relative overflow-hidden">
@@ -19,14 +26,12 @@ export function ServiceHero() {
           text="Contact Us"
         /> */}
         <div className="z-1 w-full  flex justify-center items-center text-8xl font-light"> 
-        Services
+        {Service_Heading}
             {/* <TextGenerateEffect words="Precision Web AI"/> */}
             </div>
         <p className="mt-4 font-light text-base text-neutral-300 max-w-lg text-center mx-auto">
-          Ready to bring your vision to life? Whether you have a question, a
-          project in mind, or just want to explore how we can collaborate, we're
-          here to help. Let's connect and create something extraordinary
-          together.
+        
+          {Description}
         </p>
         <div className="flex justify-center mt-4">
         <ShinyButton text="Contact Us" className="" />

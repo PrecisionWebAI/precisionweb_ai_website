@@ -1,4 +1,4 @@
-
+"use Client"
 
 
 
@@ -10,6 +10,8 @@ import { TracingBeam } from "./Components/ui/tracing-beam";
 import { Beginning } from "./Components/Universal/begining";
 import Footer from "./Components/Universal/Footer";
 import Hero from "./Components/Universal/Hero";
+import ParallaxPage from "./Components/Universal/Parallax";
+
 
 
 
@@ -18,6 +20,8 @@ import Hero from "./Components/Universal/Hero";
 export default function Home() {
   return (
     <main className="font-primary">
+      
+  <ParallaxPage/>
       <BackgroundBeams/>
   <TracingBeam >
      <Hero/>

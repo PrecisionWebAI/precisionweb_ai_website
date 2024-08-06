@@ -23,7 +23,7 @@ export function Beginning() {
       </motion.h1>
 
     </LampContainer>
-    <MagicCardDemo/>
+    
     </>
   );
 }

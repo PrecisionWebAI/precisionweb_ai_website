@@ -9,7 +9,7 @@ import { ServiceHero } from '../Components/Services_Comp/ServiceHero'
 import { FeaturesSectionDemo } from '../Components/ui/FeaturesSection'
 import { Categories } from '../Components/Services_Comp/Categories'
 
-const ContactUs = () => {
+const Services = () => {
   return (
     <>
     <BackgroundBeams/>
@@ -17,12 +17,16 @@ const ContactUs = () => {
     <NavbarDemo/>
     <ContainerScroll
         titleComponent={
-    <ServiceHero/>
+          <ServiceHero Service_Heading="Services"  Description="Ready to bring your vision to life? Whether you have a question, a
+          project in mind, or just want to explore how we can collaborate, we're
+          here to help. Let's connect and create something extraordinary
+          together. "/>
+          
         }
     >
     <FeaturesSectionDemo/>
     </ContainerScroll>
-    <Categories/>
+    {/* <Categories/> */}
     
     <Footer/>
 
@@ -31,4 +35,4 @@ const ContactUs = () => {
   )
 }
 
-export default ContactUs
+export default Services

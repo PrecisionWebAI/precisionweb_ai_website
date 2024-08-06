@@ -6,6 +6,7 @@ import { cn } from "../../lib/utils";
 import { TextGenerateEffect } from "../ui/text-generate-effect";
 import { TypewriterEffectSmooth } from "../ui/typewriter-effect";
 import { NavbarDemo } from "./Navbar";
+import { motion, useTransform, useScroll } from 'framer-motion';
 
 const Hero = () => {
     const words = [
@@ -92,6 +93,14 @@ const Hero = () => {
         },
       ]
 
+      const { scrollY } = useScroll();
+
+  // Transform scroll position to vertical movement
+  const y = useTransform(scrollY, [0, 500], [0, 300]);
+
+  // Transform scroll position to scaling
+  const scale = useTransform(scrollY, [0, 500], [1, 1.5]);
+
   return (
     <>
     {/* <BackgroundBeams/> */}
@@ -99,10 +108,25 @@ const Hero = () => {
     <NavbarDemo/>
     <div className="w-full ">
     <div className="z-1 w-full h-[100vh] flex justify-center items-center flex-col"> 
-        <h1 className="z-1 w-full  flex justify-center items-center text-8xl font-light"> 
+        {/* <h1 className="z-1 w-full  flex justify-center items-center text-8xl font-light">  */}
+        <motion.h1
+        style={{
+          y,  // vertical movement
+          scale,  // scaling
+          opacity: useTransform(scrollY, [0, 400], [1, 0.5]),  // opacity effect
+        }}
+        // Apply transition settings through initial/animate/exit props if needed
+        transition={{
+          type: 'spring',
+          stiffness: 300,
+          damping: 30,
+        }}
+        className="z-1 w-full  flex justify-center items-center text-8xl font-light"
+      >
             Precision Web AI
+            </motion.h1>
             {/* <TextGenerateEffect words="Precision Web AI"/> */}
-            </h1>
+            {/* </h1> */}
     <div className="under-head-box flex justify-center items-center w-[50%] ">
         <div className="under-head-inner flex flex-row flex justify-between w-full">
     <div className="comprehensive-box  tracking-[0.2em] font-light"><TypewriterEffectSmooth words={words}/></div>

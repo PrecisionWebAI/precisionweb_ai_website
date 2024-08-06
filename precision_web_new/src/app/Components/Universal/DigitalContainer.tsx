@@ -1,3 +1,5 @@
+"use Client"
+
 import { useTheme } from "next-themes";
 
 import { MagicCard } from "../magic_ui/magiccard";
