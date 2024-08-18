@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from 'react';
+import React, { useEffect, useRef, RefObject } from "react"; 
 
 import ShinyButton from "../magic_ui/ShinyButton";
 import BoxReveal from "../magic_ui/BoxRevealProps";
@@ -12,6 +12,37 @@ declare global {
 }
 
 export function FormSection() {
+
+  const sectionRefs: { [key: string]: RefObject<HTMLDivElement> } = {
+    filpCard: useRef<HTMLDivElement>(null),
+    cardStack: useRef<HTMLDivElement>(null),
+    // Add more refs here as needed
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      for (const section in sectionRefs) {
+        const element = sectionRefs[section]?.current;
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          const isVisible = rect.top <= window.innerHeight && rect.bottom >= 0;
+
+          if (isVisible) {
+            element.classList.add("active");
+          } else {
+            element.classList.remove("active");
+          }
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [sectionRefs]);
+
+
   useEffect(() => {
     const script = document.createElement('script');
     script.src = '//js.hsforms.net/forms/embed/v2.js';
@@ -37,9 +68,12 @@ export function FormSection() {
   }, []);
 
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center" id="form">
     <div className="w-[80%] flex flex-row justify-center items-center h-[100vh]">
-      <div className=" w-full max-w-[32rem] items-center justify-center overflow-hidden pt-8">
+      <div 
+      className="filpCard w-full max-w-[32rem] items-center justify-center overflow-hidden pt-8"
+      ref={sectionRefs.filpCard}
+      >
         <BoxReveal boxColor={"#5046e6"} duration={0.5}>
           <p className="text-[3.5rem] font-semibold">
             Precision Web {" "}<span className="text-[#5046e6]">AI</span>
@@ -69,7 +103,12 @@ export function FormSection() {
       </div>
 
       {/* HubSpot form container */}
-      <div id="hubspot-form-container" className="w-full max-w-md mx-auto mt-8 border p-4 rounded-lg h-[32rem] overflow-hidden"></div>
+      
+      <div 
+      id="hubspot-form-container" 
+      className="cardStack w-full max-w-md mx-auto mt-8 border p-4 rounded-lg h-[32rem] overflow-hidden"
+      ref={sectionRefs.cardStack}
+      ></div>
     </div>
     </div>
   );

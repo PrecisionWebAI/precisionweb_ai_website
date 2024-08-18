@@ -1,4 +1,6 @@
-"use Client"
+"use client";
+
+import React, { useEffect, useRef, RefObject } from "react";
 
 import { useTheme } from "next-themes";
 
@@ -6,20 +8,53 @@ import { MagicCard } from "../magic_ui/magiccard";
 
 export function MagicCardDemo() {
   const { theme } = useTheme();
+
+
+  const sectionRefs: { [key: string]: RefObject<HTMLDivElement> } = {
+    magicCardComp: useRef<HTMLDivElement>(null),
+    // Add more refs here as needed
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      for (const section in sectionRefs) {
+        const element = sectionRefs[section]?.current;
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          const isVisible = rect.top <= window.innerHeight && rect.bottom >= 0;
+
+          if (isVisible) {
+            element.classList.add("active");
+          } else {
+            element.classList.remove("active");
+          }
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [sectionRefs]);
+
+
+
   return (
     <>
       <div className="flex justify-center items-center mt-[-13rem]">
         <div
           className={
-            "flex h-[500px] w-[80%] flex-col gap-8 justify-center lg:h-[250px] lg:flex-row"
+            "magic-card-comp flex h-[500px] w-[80%] flex-col gap-8 justify-center lg:h-[250px] lg:flex-row"
           }
+          ref={sectionRefs.magicCardComp}
         >
           <MagicCard
             className="cursor-pointer flex-col   shadow-2xl  w-[30%] justify-center items-center p-4 text-center"
             gradientColor={theme === "dark" ? "#262626" : "#D9D9D955"}
           >
             <div className="flex justify-center items-center">
-              <div className="p-4 w-[3rem] h-[3rem] border border-2 rounded-full flex justify-center items-center text-3xl">
+              <div className="p-4 w-[3rem] h-[3rem]  border-white/[0.2] rounded-full flex justify-center items-center text-3xl">
                 1
               </div>
             </div>

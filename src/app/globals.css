@@ -20,3 +20,116 @@ body {
     height: auto;
     /* overflow: hidden; */
 }
+
+
+/* animation */
+
+
+/* y positive starts*/
+
+.magic-card-comp,
+.box-3,
+.mission-inner-first-para,
+.elite-units,
+.mission-inner-software-second-para {
+    opacity: 0;
+    transform: translateY(150px);
+    /* Initial position for vertical animation */
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.magic-card-comp.active,
+.box-3.active,
+.mission-inner-first-para.active,
+.elite-units.active,
+.mission-inner-software-second-para.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* y positive ends*/
+
+
+/* X negative starts */
+
+.filpCard,
+.second-box-heading,
+.animated-second-box-heading,
+.mission-inner-software-first-img {
+    opacity: 0;
+    transform: translateX(-150px);
+    /* Initial position for vertical animation */
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.filpCard.active,
+.second-box-heading.active,
+.animated-second-box-heading.active,
+.mission-inner-software-first-img.active,
+.guardian-left-div.active,
+.how-to-hire-pic.active,
+.why-us-1.active,
+.be-solution-left-side.active,
+.general-left-support.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+
+/* X negative ends */
+
+
+/* --------X positive starts---------- */
+
+.cardStack,
+.second-box-text,
+.animated-second-box-text,
+.mission-inner-second-para,
+.mission-inner-software-first-para {
+    opacity: 0;
+    transform: translateX(150px);
+    /* Initial position for vertical animation */
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.cardStack.active,
+.second-box-text.active,
+.animated-second-box-text.active,
+.mission-inner-second-para.active,
+.mission-inner-software-first-para.active,
+.how-to-hire-text.active,
+.why-us-2.active,
+.general-right-support.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+
+/*  Y negative starts */
+
+.box-2,
+.box-4,
+.your-area-heading,
+.other-services-container,
+.heading-rated,
+.elite-para-sub,
+.service-hero-text,
+.mission-inner-software-second-img {
+    opacity: 0;
+    transform: translateY(-150px);
+    /* Initial position for vertical animation */
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.box-2.active,
+.box-4.active,
+.your-area-heading.active,
+.other-services-container.active,
+.heading-rated.active,
+.elite-para-sub.active,
+.service-hero-text.active,
+.mission-inner-software-second-img.active {
+    opacity: 1;
+    transform: translateY(0);
+}

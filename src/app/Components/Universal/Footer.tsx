@@ -44,7 +44,7 @@ const Footer: React.FC = () => {
                   <p className="text-xl font-medium mb-2">Legal Information</p>
                   <ul>
                     <li className="mb-2 text-sm">
-                      <Link href="/">Privacy Policy</Link>
+                      <Link href="/Policy">Privacy Policy</Link>
                     </li>
                     <li className="mb-2 text-sm">
                       <Link href="/about">Terms of Service</Link>

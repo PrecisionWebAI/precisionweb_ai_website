@@ -18,7 +18,7 @@ const ContactUs = () => {
         }
     >
     
-    <FormSection/>
+    <FormSection />
     </ContainerScroll>
     <Footer/>
 

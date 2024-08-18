@@ -1,9 +1,13 @@
+"use client";
+
 import React from "react";
 import { cn } from "../../lib/utils";
 import { Spotlight } from "../ui/Spotlight";
 import TypingAnimation from "../magic_ui/TypingAnimationProps";
 import ShinyButton from "../magic_ui/ShinyButton";
 import { SparklesCore } from "../ui/Sparkles";
+import { motion, useTransform, useScroll } from "framer-motion";
+import Link from "next/link";
 
 
 
@@ -13,6 +17,16 @@ interface ServiceHeroProps {
 }
 
 export const ServiceHero: React.FC<ServiceHeroProps> = ({ Service_Heading, Description }) => {
+
+
+  const { scrollY } = useScroll();
+
+  // Transform scroll position to vertical movement
+  const y = useTransform(scrollY, [0, 450], [0, 300]);
+
+  // Transform scroll position to scaling
+  const scale = useTransform(scrollY, [0, 450], [1, 1.5]);
+
   return (
     <>
     <div className="h-[100vh] w-full rounded-md flex flex-col md:items-center md:justify-center  antialiased bg-grid-white/[0.02] relative overflow-hidden">
@@ -25,16 +39,31 @@ export const ServiceHero: React.FC<ServiceHeroProps> = ({ Service_Heading, Descr
           className="text-6xl font-bold text-white"
           text="Contact Us"
         /> */}
-        <div className="z-1 w-full  flex justify-center items-center text-8xl font-light"> 
+        <motion.div 
+        className="z-1 w-full  flex justify-center items-center text-8xl font-light"
+        style={{
+          y, // vertical movement
+          scale, // scaling
+          opacity: useTransform(scrollY, [0, 450], [1, 0.5]), // opacity effect
+        }}
+        // Apply transition settings through initial/animate/exit props if needed
+        transition={{
+          type: "spring",
+          stiffness: 300,
+          damping: 30,
+        }}
+        > 
         {Service_Heading}
             {/* <TextGenerateEffect words="Precision Web AI"/> */}
-            </div>
+            </motion.div>
         <p className="mt-4 font-light text-base text-neutral-300 max-w-lg text-center mx-auto">
         
           {Description}
         </p>
         <div className="flex justify-center mt-4">
+        <Link href="/Contact/#form">
         <ShinyButton text="Contact Us" className="" />
+        </Link>
         </div>
       </div>
       <div className="w-[40rem] h-40 absolute">
